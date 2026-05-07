@@ -1,2 +1,3 @@
-# cypress-typescript
-Template for Cypress E2E projects whit TypeScript and POM
+# cypress-template
+
+Template for Cypress E2E projects with TypeScript and POM
