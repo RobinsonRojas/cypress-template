@@ -1,13 +1,16 @@
 ---
-name: cypress-author
-description: "Creates, updates, and fixes Cypress tests (E2E/end-to-end and component tests). Use when the user asks to create tests, add tests, write tests, update tests, test this file/component, new spec, or fix a failing or flaky test. Apply even when the user does not say 'Cypress' (e.g. 'create tests for this file'). Prefer cypress-explain when the user only wants to explain or review tests without changing code."
-model: inherit
-background: false
 allowed-tools: Read, Edit
+background: false
+description: Creates, updates, and fixes Cypress tests (E2E/end-to-end and component tests). Use when the user asks to create tests, add tests, write tests, update tests, test this file/component, new spec, or fix a failing or flaky test. Apply even when the user does not say 'Cypress' (e.g. 'create tests for this file'). Prefer cypress-explain when the user only wants to explain or review tests without changing code.
 metadata:
-  version: 1.0.0
+    github-path: skills/cypress-author
+    github-ref: refs/tags/v1.0.0
+    github-repo: https://github.com/cypress-io/ai-toolkit
+    github-tree-sha: 6e5a5e802cfb2ebfebfc2470ea17ce0836b7cbf2
+    version: 1.0.1
+model: inherit
+name: cypress-author
 ---
-
 # Cypress Author
 
 **Use this skill when:** The user wants to create, add, or write tests (including component tests or tests for a file); fix or update tests; or change test code. Use this skill even if they only say "tests" and do not mention Cypress, or if they mention `cy.*` (the word "cy", a period, and a suffix indicating a Cypress command).

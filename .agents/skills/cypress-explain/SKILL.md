@@ -1,13 +1,16 @@
 ---
-name: cypress-explain
-description: "Explains Cypress tests (E2E and component tests), and answers questions about Cypress use and behavior. Use when the user asks to explain how a test works, explain how Cypress works, review or critique a test without writing code. Apply even when the user does not say 'Cypress' (e.g. 'explain this test'). Prefer the cypress-author skill when the user wants to create, fix, or update tests."
-model: inherit
-background: false
 allowed-tools: Read
+background: false
+description: Explains Cypress tests (E2E and component tests), and answers questions about Cypress use and behavior. Use when the user asks to explain how a test works, explain how Cypress works, review or critique a test without writing code. Apply even when the user does not say 'Cypress' (e.g. 'explain this test'). Prefer the cypress-author skill when the user wants to create, fix, or update tests.
 metadata:
-  version: 1.0.0
+    github-path: skills/cypress-explain
+    github-ref: refs/tags/v1.0.0
+    github-repo: https://github.com/cypress-io/ai-toolkit
+    github-tree-sha: 62e1217f922fc7da6708e5717948e4b145169506
+    version: 1.0.1
+model: inherit
+name: cypress-explain
 ---
-
 # Cypress Explain
 
 **Use this skill when:** The user wants to understand Cypress or an existing test, or to review or critique tests without authoring changes. Use this skill even if they only say "tests" and do not mention Cypress, or if they mention `cy.*` (the word "cy", a period, and a suffix indicating a Cypress command).
