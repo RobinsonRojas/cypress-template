@@ -1,7 +1,9 @@
-#node_modules
+# Node
 node_modules/
 
-#cypress
-cypress/downloads/
-cypress/screenshots/
-cypress/videos/
+# Cypress
+cypress/reports/
+
+# Environment variables
+.env
+cypress.env.json
