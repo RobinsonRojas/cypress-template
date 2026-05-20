@@ -17,7 +17,7 @@
     "skills:update": "gh skill update --dir .agents/skills"
   },
   "devDependencies": {
-    "cypress": "^15.14.2",
+    "cypress": "^15.15.0",
     "typescript": "^6.0.3"
   }
 }

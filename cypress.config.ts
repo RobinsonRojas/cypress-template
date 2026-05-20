@@ -17,7 +17,7 @@ export default defineConfig({
     requestTimeout: 10000,
     responseTimeout: 60000,
     pageLoadTimeout: 120000,
-    defaultCommandTimeout: 15000,
+    defaultCommandTimeout: 8000,
     baseUrl: 'https://example.cypress.io',
     experimentalModifyObstructiveThirdPartyCode: true,
     experimentalRunAllSpecs: true,
@@ -28,6 +28,8 @@ export default defineConfig({
     },
 
     setupNodeEvents(on, config) {
+      //env SO||cypress.env.json
+      const secretKey = process.env.SECRET_KEY || config.env.SECRET_KEY;
       // implement node event listeners here
       on('after:spec', (spec: Cypress.Spec, results: CypressCommandLine.RunResult) => {
         if (results && results.video) {
