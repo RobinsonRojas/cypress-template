@@ -1,13 +1,12 @@
 {
   "name": "cypress-template",
   "version": "1.0.0",
-  "description": "Template for Cypress E2E projects with TypeScript and POM",
+  "description": "Template for Cypress E2E projects with TypeScript",
   "homepage": "https://github.com/RobinsonRojas/cypress-template#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RobinsonRojas/cypress-template.git"
   },
-  "license": "ISC",
   "author": "1robinsonrojas@gmail.com",
   "type": "module",
   "scripts": {
@@ -18,6 +17,7 @@
   },
   "devDependencies": {
     "cypress": "^15.17.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "@types/node": "^25.9.3"
   }
 }
