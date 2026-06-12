@@ -10,7 +10,10 @@ export default defineConfig({
     responseTimeout: 60000,
     pageLoadTimeout: 120000,
     defaultCommandTimeout: 8000,
-    retries: 2,
+    retries: {
+      openMode: 1,
+      runMode: 2
+    },
     video: true,
     reporter: 'junit',
     reporterOptions: {
@@ -22,6 +25,7 @@ export default defineConfig({
     experimentalModifyObstructiveThirdPartyCode: true,
     experimentalRunAllSpecs: true,
     allowCypressEnv: false,
+    scrollBehavior: 'center',
 
     setupNodeEvents(on, config) {
       config.baseUrl = config.env.BASE_URL;
