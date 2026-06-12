@@ -5,5 +5,5 @@ node_modules/
 cypress/reports/
 
 # Environment variables
-.env
 cypress.env.json
+.env

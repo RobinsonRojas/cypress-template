@@ -2,7 +2,6 @@
   "name": "cypress-template",
   "version": "1.0.0",
   "description": "Template for Cypress E2E projects with TypeScript",
-  "homepage": "https://github.com/RobinsonRojas/cypress-template#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RobinsonRojas/cypress-template.git"
@@ -10,7 +9,8 @@
   "author": "1robinsonrojas@gmail.com",
   "type": "module",
   "scripts": {
-    "cy:open": "cypress open --e2e --browser electron",
+    "cy:verify": "cypress verify",
+    "cy:open:chrome": "cypress open --e2e --browser chrome",
     "cy:run": "cypress run",
     "cy:run:record": "cypress run --record",
     "skills:update": "gh skill update --dir .agents/skills"
