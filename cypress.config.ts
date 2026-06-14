@@ -11,7 +11,7 @@ export default defineConfig({
     pageLoadTimeout: 120000,
     defaultCommandTimeout: 8000,
     retries: {
-      openMode: 1,
+      openMode: 0,
       runMode: 2
     },
     video: true,
