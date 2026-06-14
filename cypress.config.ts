@@ -32,6 +32,16 @@ export default defineConfig({
 
       // implement node event listeners here
 
+      // Launch Chrome with a clean profile (no cookies, cache or sessions)
+      on('before:browser:launch', (browser, launchOptions) => {
+        if (browser.family === 'chromium') {
+          launchOptions.args.push('--guest');
+          launchOptions.args.push('--disable-extensions');
+          launchOptions.args.push('--disable-sync');
+        }
+        return launchOptions;
+      });
+
       // Video management: delete videos for passing tests to save space
       on('after:spec', (spec: Cypress.Spec, results: CypressCommandLine.RunResult) => {
         if (results && results.video) {
