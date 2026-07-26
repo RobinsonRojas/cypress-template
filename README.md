@@ -4,10 +4,10 @@ Plantilla base para proyectos E2E con Cypress + TypeScript.
 
 ## Objetivo
 
-Este repositorio acelera el arranque de pruebas E2E con una configuración con:
+Este repositorio acelera el arranque de pruebas E2E con una configuración que incluye:
 
 - Ejemplo básico de localizadores,
-- Ejemplo de logoin y manejo de sesión,
+- Ejemplos de login y manejo de sesión,
 - Scripts de ejecución local y en CI,
 - Configuración de reporter JUnit,
 - Manejo de videos, screenshots y descargas,
@@ -52,15 +52,31 @@ Ejemplo de `cypress.env.json`:
 
 ## Filosofía de diseño de pruebas
 
-Aunque el patrón de Page Object viene de Selenium, no suele ser la opción más alineada con Cypress.
-
 Para Cypress, se recomienda priorizar:
 
-- pruebas independientes y legibles.
-- comandos personalizados,
-- utilidades pequeñas,
+- Pruebas independientes y **legibles**.
+- Menos abstracción.
+- Comandos personalizados.
+- Utilidades pequeñas.
+- BDD con Mocha
 
-Esto reduce acoplamiento y hace los tests más rápidos de mantener con AI.
+Esto reduce el acoplamiento y hace las pruebas más rápidas de escribir y mantener con AI.
+
+### Por qué no utilizar Page Object
+
+En Cypress, un POM clásico suele duplicar abstracciones que ya cubren los comandos nativos. Preferimos comandos personalizados y utilidades pequeñas para mantener pruebas más directas, legibles y fáciles de ajustar.
+
+Cuando un Page Object encapsula estado o guarda referencias de elementos, esas referencias pueden quedar obsoletas tras un re-render del DOM, lo que incrementa la flakiness. Cypress es más estable cuando cada interacción reconsulta el DOM con comandos encadenados y aserciones, en lugar de reutilizar objetos de página con estado.
+
+> Doc: <https://docs.cypress.io/app/core-concepts/best-practices#Organizing-Tests-Logging-In-Controlling-State>
+
+### BDD sin Cucumber
+
+Cucumber agrega una capa extra entre la prueba y la aplicación: hay que crear y mantener definiciones de pasos antes de probar valor real. Esto aumenta el costo de mantenimiento y hace más lenta la escritura de pruebas.
+
+Además, Cypress ya ofrece BDD con la interfaz de estructura de pruebas Mocha y comandos orientados al comportamiento del usuario, ya que la mayoría de los comandos se leen como una frase sin añadir una capa adicional de abstracción.
+
+> Doc: <https://docs.cypress.io/app/references/bundled-libraries#Mocha>, <https://mochajs.org/interfaces/bdd/>
 
 ## Estructura del proyecto
 
@@ -68,13 +84,13 @@ Esto reduce acoplamiento y hace los tests más rápidos de mantener con AI.
 .
 +-- cypress/
 |   +-- e2e/                 # specs E2E
-|   +-- fixtures/            # datos estaticos de prueba
+|   +-- fixtures/            # datos estáticos de prueba
 |   +-- support/
 |       +-- commands.ts      # comandos personalizados
 |       +-- e2e.ts           # hooks/config global del soporte
-+-- cypress.config.ts        # configuracion de Cypress
++-- cypress.config.ts        # configuración de Cypress
 +-- cypress.env.json         # variables de entorno del proyecto
-+-- tsconfig.json            # configuracion de TypeScript
++-- tsconfig.json            # configuración de TypeScript
 ```
 
 ## Reportes y artefactos
@@ -97,3 +113,7 @@ Las herramientas de Cypress AI permiten acelerar la creación y mantenimiento de
 - `cypress-author`: para crear, actualizar y corregir pruebas Cypress.
 - `cypress-explain`: para explicar o revisar pruebas existentes.
 - `cypress-docs`: para consultar documentación oficial de Cypress con mayor precisión.
+
+### MCP
+
+-
