@@ -9,6 +9,7 @@ Este repositorio acelera el arranque de pruebas E2E con una configuración que i
 - Ejemplo básico de localizadores,
 - Ejemplos de login y manejo de sesión,
 - Scripts de ejecución local y en CI,
+- Configuración de pipeline en Azure DevOps,
 - Configuración de reporter JUnit,
 - Manejo de videos, screenshots y descargas,
 - Variables de entorno nativas de Cypress,
