@@ -1,0 +1,75 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - cypress/**
+
+resources:
+  pipelines:
+    - pipeline: frontendDeploy
+      source: CD-Front
+      trigger:
+        branches:
+          include:
+            - qa
+        stages:
+          - Deploy QA
+
+jobs:
+  - job: Cypress_e2e_tests
+    pool:
+      name: ubuntu-latest
+
+    steps:
+      - task: UseNode@1
+        displayName: 'Use Node.js 22.x'
+        inputs:
+          version: '22.x'
+
+      - script: npm ci
+        displayName: 'Install npm dependencies'
+
+      - script: npm run cy:verify
+        displayName: 'Run Cypress verify'
+
+      - script: npm run cy:run:record
+        displayName: 'Run Cypress E2E Tests'
+        env:
+          CYPRESS_RECORD_KEY: $(CYPRESS_RECORD_KEY)
+          CYPRESS_BASE_URL: $(CYPRESS_BASE_URL)
+          CYPRESS_USERNAME: $(CYPRESS_USERNAME)
+          CYPRESS_PASSWORD: $(CYPRESS_PASSWORD)
+
+      - task: PublishTestResults@2
+        displayName: 'Publicar resultados JUnit'
+        condition: succeededOrFailed()
+        continueOnError: true
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '**/test-results-*.xml'
+          searchFolder: '$(System.DefaultWorkingDirectory)/cypress/reports/junit'
+          mergeTestResults: true
+          failTaskOnMissingResultsFile: true
+          testRunTitle: 'Cypress e2e Results'
+          publishRunAttachments: true
+
+      # Publica capturas y videos como artefactos del pipeline cuando fallan las pruebas
+      - task: PublishPipelineArtifact@1
+        displayName: 'Publicar screenshots de Cypress'
+        condition: failed()
+        continueOnError: true
+        inputs:
+          targetPath: '$(System.DefaultWorkingDirectory)/cypress/reports/screenshots'
+          artifact: 'cypress-screenshots'
+          publishLocation: 'pipeline'
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Publicar videos de Cypress'
+        condition: failed()
+        continueOnError: true
+        inputs:
+          targetPath: '$(System.DefaultWorkingDirectory)/cypress/reports/videos'
+          artifact: 'cypress-videos'
+          publishLocation: 'pipeline'
