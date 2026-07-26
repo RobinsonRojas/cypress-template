@@ -104,10 +104,31 @@ Cypress.Commands.add('loginToAAD', (AAD_USERNAME: string, AAD_PASSWORD: string) 
   );
 });
 
+Cypress.Commands.add('dataCy', (value) => {
+  return cy.get(`[data-cy=${value}]`);
+});
+
 declare global {
   namespace Cypress {
     interface Chainable {
+      /**
+       * Custom command to login by Azure Active Directory and caching the session.
+       * @example cy.loginToAAD('user@example.com', 'password123')
+       * @example cy.env(['AAD_USERNAME', 'AAD_PASSWORD']).then(({ AAD_USERNAME, AAD_PASSWORD }) => {
+                    cy.loginToAAD(AAD_USERNAME, AAD_PASSWORD);
+                  });
+       */
       loginToAAD(username: string, password: string): Chainable<void>;
+      /**
+       * Custom command to select DOM element by data-cy attribute.
+       * @example cy.dataCy('greeting')
+       */
+      dataCy(value: string): Chainable<JQuery<HTMLElement>>;
+      /**
+       * Custom command to type a few random words into input elements
+       * @param count=3
+       * @example cy.get('input').typeRandomWords()
+       */
     }
   }
 }
