@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "chrome-devtools-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--no-usage-statistics",
+        "--browser-url=http://localhost:59210"
+      ],
+      "env": {},
+      "type": "stdio"
+    }
+  },
+  "inputs": []
+}

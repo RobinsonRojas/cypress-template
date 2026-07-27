@@ -3,7 +3,7 @@ import fs from 'fs';
 
 export default defineConfig({
   e2e: {
-    projectId: '',
+    projectId: 'wnang9',
     viewportWidth: 1366,
     viewportHeight: 600,
     requestTimeout: 10000,

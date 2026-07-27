@@ -111,10 +111,34 @@ Las herramientas de Cypress AI permiten acelerar la creación y mantenimiento de
 
 ### Skills
 
+Habilidades oficiales proporcionadas por Cypress
+
 - `cypress-author`: para crear, actualizar y corregir pruebas Cypress.
 - `cypress-explain`: para explicar o revisar pruebas existentes.
 - `cypress-docs`: para consultar documentación oficial de Cypress con mayor precisión.
 
 ### MCP
 
--
+Servidores MCP oficales y recomendados de forma oficial por Cypress.
+
+- `chrome-devtools-mcp`: Conecta tu agente con Cypress app conectado a tu sesión de Cypress, el agente tiene acceso en tiempo real a:
+  - **Estado de prueba/fallo y mensajes de error** — consultados directamente desde el runner en vivo, no retransmitidos por ti
+  - **Estado del DOM en el punto de fallo** — cómo era realmente la aplicación, no una descripción de ella
+  - **Registros de consola y datos de solicitudes de red** — útiles para diagnosticar fallos que no tengan que ver únicamente con selectores o aserciones
+  - **Registros de comandos de Cypress** — la secuencia completa de lo que se ejecutó antes del fallo
+
+  Además, puedes señalar a tu agente los activos a los que ya tiene acceso, como capturas de pantalla de fallos, tu código local y tu historial de git. Juntos, eso le da todo lo necesario para determinar si la prueba o la app necesita cambiar.
+
+  > Doc:<https://www.cypress.io/blog/connect-an-ai-agent-to-a-live-cypress-test-session>
+
+- `cypress-cloud-mcp`:
+
+  > Doc:<https://docs.cypress.io/cloud/integrations/cloud-mcp>
+
+### Cypress CLI
+
+Cyrpress CLI es una apliucacion de terminal pensada para ser utilizada por agentes de ia para coansultare informacion de cypress-cloud sobre las ejecucion de pruebas y dotar de contexto a los agentes
+
+- `cypress-cloud-cli`:
+
+  > Doc:<https://docs.cypress.io/cloud/integrations/cloud-cli>
